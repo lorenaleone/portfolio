@@ -25,6 +25,9 @@
 
 <section class="hero">
   <div class="hero-inner">
+    <div class="hero-photo">
+      <img src="../assets/profile.jpg" alt="Lorena Leone" class="hero-photo-img">
+    </div>
     <div class="hero-content">
       <div class="hero-eyebrow">Lorena Leone · Portfolio 2026</div>
       <h1 class="hero-title">
@@ -41,30 +44,8 @@
         <span>Remote · global</span>
       </div>
     </div>
-    <div class="hero-photo">
-      <img src="../assets/profile.jpg" alt="Lorena Leone" class="hero-photo-img">
-    </div>
   </div>
 </section>
-
-<div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-num">8+</div>
-    <div class="stat-label">Projects</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">3</div>
-    <div class="stat-label">Own products</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">2</div>
-    <div class="stat-label">Languages</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">∞</div>
-    <div class="stat-label">Hours coded</div>
-  </div>
-</div>
 
 <section class="projects" id="projects">
   <div class="projects-header">
@@ -72,12 +53,10 @@
       <div class="section-label">Selected work</div>
       <h2 class="section-title">Recent <em>projects</em>.</h2>
     </div>
-    <div class="carousel-controls">
-      <span class="carousel-counter"><span class="current">01</span> / <span class="total">08</span></span>
-      <button class="carousel-btn" id="prevBtn" aria-label="Previous">←</button>
-      <button class="carousel-btn" id="nextBtn" aria-label="Next">→</button>
-    </div>
   </div>
+
+  <button class="carousel-btn" id="prevBtn" aria-label="Previous">←</button>
+  <button class="carousel-btn" id="nextBtn" aria-label="Next">→</button>
 
   <div class="carousel-track-wrap">
     <div class="carousel-track" id="carouselTrack">
@@ -88,10 +67,7 @@
           <img src="../assets/projects/thereputeiq-hero.png" alt="The Repute IQ" loading="lazy">
         </div>
         <div class="card-content">
-          <div class="card-meta">
-            <span>01 · B2B SaaS</span>
-            <span class="card-status status-validation">In validation</span>
-          </div>
+          <div class="card-meta"><span>01 · B2B SaaS</span></div>
           <h3 class="card-title">The Repute IQ</h3>
           <p class="card-desc">Automated online reputation reports for medical and aesthetic clinics. Python/Flask backend, Google Maps integration, multi-currency Stripe.</p>
           <div class="card-tags">
@@ -109,17 +85,13 @@
           <img src="../assets/projects/reservafacil-hero.png" alt="Reserva Fácil" loading="lazy">
         </div>
         <div class="card-content">
-          <div class="card-meta">
-            <span>02 · Own product</span>
-            <span class="card-status status-validation">In development</span>
-          </div>
+          <div class="card-meta"><span>02 · Own product</span></div>
           <h3 class="card-title">Reserva Fácil</h3>
           <p class="card-desc">My own project automating booking systems for travel agencies. Apps Script generates PDF vouchers in 1 click from the client form.</p>
           <div class="card-tags">
             <span class="card-tag">Apps Script</span>
             <span class="card-tag">Google Sheets</span>
             <span class="card-tag">PDF Auto</span>
-            <span class="card-tag">Web</span>
           </div>
         </div>
       </a>
@@ -130,10 +102,7 @@
           <img src="../assets/projects/tableau-influenza.png" alt="Tableau Influenza Analysis" loading="lazy">
         </div>
         <div class="card-content">
-          <div class="card-meta">
-            <span>03 · Tableau</span>
-            <span class="card-status status-marketplace">Tableau Public</span>
-          </div>
+          <div class="card-meta"><span>03 · Tableau</span></div>
           <h3 class="card-title">Influenza Analysis</h3>
           <p class="card-desc">Interactive Tableau story dashboard analyzing US Influenza mortality. Population correlations, treemaps and chapter-based narrative.</p>
           <div class="card-tags">
@@ -150,9 +119,7 @@
           <img src="../assets/projects/vgsales-forecast.png" alt="VG Sales Data Storytelling" loading="lazy">
         </div>
         <div class="card-content">
-          <div class="card-meta">
-            <span>04 · Storytelling</span>
-          </div>
+          <div class="card-meta"><span>04 · Storytelling</span></div>
           <h3 class="card-title">VG Sales — Data Story</h3>
           <p class="card-desc">Visual presentation of global video game sales analysis. Regional forecast, top genres and data narrative.</p>
           <div class="card-tags">
@@ -169,16 +136,12 @@
           <img src="../assets/projects/crm-tracker.png" alt="CRM Tracker" loading="lazy">
         </div>
         <div class="card-content">
-          <div class="card-meta">
-            <span>05 · Digital product</span>
-            <span class="card-status status-marketplace">On Etsy</span>
-          </div>
+          <div class="card-meta"><span>05 · Digital product</span></div>
           <h3 class="card-title">CRM Tracker</h3>
-          <p class="card-desc">Professional CRM template in Google Sheets for freelancers and small businesses. Pipeline, dashboard and automations. Sold on Etsy.</p>
+          <p class="card-desc">Professional CRM template in Google Sheets for freelancers and small businesses. Pipeline, dashboard and automations.</p>
           <div class="card-tags">
             <span class="card-tag">Google Sheets</span>
             <span class="card-tag">Apps Script</span>
-            <span class="card-tag">Etsy</span>
           </div>
         </div>
       </a>
@@ -189,10 +152,7 @@
           <img src="../assets/projects/dashboard-concursos.png" alt="Study Dashboard" loading="lazy">
         </div>
         <div class="card-content">
-          <div class="card-meta">
-            <span>06 · Apps Script</span>
-            <span class="card-status status-live">Live</span>
-          </div>
+          <div class="card-meta"><span>06 · Apps Script</span></div>
           <h3 class="card-title">Study Dashboard</h3>
           <p class="card-desc">Complete system for exam prep mentors. 7 integrated tabs with KPIs, timer, vertical syllabus and adaptive review.</p>
           <div class="card-tags">
@@ -209,16 +169,13 @@
           <img src="../assets/projects/instacart-heatmap.png" alt="Instacart Analysis" loading="lazy">
         </div>
         <div class="card-content">
-          <div class="card-meta">
-            <span>07 · Data analysis</span>
-          </div>
+          <div class="card-meta"><span>07 · Data analysis</span></div>
           <h3 class="card-title">Instacart Analysis</h3>
           <p class="card-desc">EDA on Instacart dataset: purchase patterns, customer segmentation and visualizations with Pandas + Seaborn.</p>
           <div class="card-tags">
             <span class="card-tag">Python</span>
             <span class="card-tag">Pandas</span>
             <span class="card-tag">Seaborn</span>
-            <span class="card-tag">EDA</span>
           </div>
         </div>
       </a>
@@ -229,15 +186,12 @@
           <img src="../assets/projects/rockbuster-charts.png" alt="Rockbuster SQL Analysis" loading="lazy">
         </div>
         <div class="card-content">
-          <div class="card-meta">
-            <span>08 · SQL</span>
-          </div>
+          <div class="card-meta"><span>08 · SQL</span></div>
           <h3 class="card-title">Rockbuster Stealth</h3>
           <p class="card-desc">SQL analysis for a rental chain transitioning to streaming. Window functions, CTEs and revenue insights by country.</p>
           <div class="card-tags">
             <span class="card-tag">PostgreSQL</span>
             <span class="card-tag">CTEs</span>
-            <span class="card-tag">Window Functions</span>
           </div>
         </div>
       </a>
@@ -245,6 +199,7 @@
     </div>
   </div>
 
+  <div class="carousel-counter"><span class="current">01</span> / 08</div>
   <div class="carousel-dots" id="carouselDots"></div>
 </section>
 
@@ -300,14 +255,13 @@
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/lleone" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
       <a href="https://github.com/lorenaleone" target="_blank" rel="noopener" class="contact-link">GitHub</a>
+      <a href="https://x.com/lleone92" target="_blank" rel="noopener" class="contact-link">X (Twitter)</a>
       <a href="https://public.tableau.com/app/profile/lorena.leone/vizzes" target="_blank" rel="noopener" class="contact-link">Tableau</a>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  © 2026 LORENA LEONE
-</footer>
+<footer class="footer">© 2026 LORENA LEONE</footer>
 
 <script>
 (function() {
@@ -319,17 +273,9 @@
   const dotsWrap = document.getElementById('carouselDots');
   
   let current = 0;
-  let cardsPerView = 2;
-  let totalSlides = Math.ceil(cards.length / cardsPerView);
-  
-  function calcCardsPerView() {
-    if (window.innerWidth <= 1024) return 1;
-    return 2;
-  }
+  const totalSlides = cards.length;
   
   function buildDots() {
-    cardsPerView = calcCardsPerView();
-    totalSlides = Math.ceil(cards.length / cardsPerView);
     dotsWrap.innerHTML = '';
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('button');
@@ -341,14 +287,9 @@
   }
   
   function update() {
-    const card = cards[0];
-    const cardWidth = card.offsetWidth;
-    const gap = 24;
-    const offset = current * (cardWidth + gap) * cardsPerView;
-    track.style.transform = `translateX(-${offset}px)`;
-    
-    const startCard = current * cardsPerView + 1;
-    counter.textContent = String(startCard).padStart(2, '0');
+    const cardWidth = cards[0].offsetWidth + 32;
+    track.style.transform = `translateX(-${current * cardWidth}px)`;
+    counter.textContent = String(current + 1).padStart(2, '0');
     
     document.querySelectorAll('.carousel-dot').forEach((d, i) => {
       d.classList.toggle('active', i === current);
@@ -379,11 +320,7 @@
     if (e.key === 'ArrowRight') goTo(current + 1);
   });
   
-  window.addEventListener('resize', () => {
-    buildDots();
-    current = 0;
-    update();
-  });
+  window.addEventListener('resize', update);
   
   buildDots();
   update();
