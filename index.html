@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lorena Leone — Data Analyst & Builder</title>
-<meta name="description" content="Analista de dados e desenvolvedora full-stack. Automação, dashboards e produtos digitais.">
+<meta name="description" content="Analista de dados e desenvolvedora. Automação, dashboards e produtos digitais.">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='serif' font-style='italic' fill='%23d4a574'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='serif' font-style='italic' fill='%23c9a86a'%3EL%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 
@@ -44,7 +44,7 @@
       </div>
     </div>
     <div class="hero-photo">
-      <img src="assets/profile.jpg" alt="Lorena Leone" class="hero-photo-img" onerror="this.src='assets/avatar-placeholder.png'">
+      <img src="assets/profile.jpg" alt="Lorena Leone" class="hero-photo-img">
     </div>
   </div>
 </section>
@@ -69,19 +69,28 @@
   </div>
 </div>
 
-<!-- PROJECTS — VISUAL GRID -->
+<!-- PROJECTS — CAROUSEL -->
 <section class="projects" id="projetos">
-  <div class="projects-inner">
-    <div class="section-label">Trabalhos selecionados</div>
-    <h2 class="section-title">Projetos <em>recentes</em>.</h2>
-    
-    <div class="projects-grid">
-      
-      <!-- Project 01 — The Repute IQ (LARGE) -->
-      <a href="https://www.thereputeiq.com" target="_blank" rel="noopener" class="project-card card-large">
+  <div class="projects-header">
+    <div class="projects-header-left">
+      <div class="section-label">Trabalhos selecionados</div>
+      <h2 class="section-title">Projetos <em>recentes</em>.</h2>
+    </div>
+    <div class="carousel-controls">
+      <span class="carousel-counter"><span class="current">01</span> / <span class="total">08</span></span>
+      <button class="carousel-btn" id="prevBtn" aria-label="Anterior">←</button>
+      <button class="carousel-btn" id="nextBtn" aria-label="Próximo">→</button>
+    </div>
+  </div>
+
+  <div class="carousel-track-wrap">
+    <div class="carousel-track" id="carouselTrack">
+
+      <!-- 01 — The Repute IQ -->
+      <a href="https://www.thereputeiq.com" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="assets/projects/thereputeiq-hero.png" alt="The Repute IQ">
+          <img src="assets/projects/thereputeiq-hero.png" alt="The Repute IQ" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -98,32 +107,34 @@
           </div>
         </div>
       </a>
-      
-      <!-- Project 02 — Reserva Fácil (SMALL) -->
-      <a href="https://www.thereputeiq.com/reservafacil" target="_blank" rel="noopener" class="project-card card-small">
+
+      <!-- 02 — Reserva Fácil -->
+      <a href="https://www.thereputeiq.com/reservafacil" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
-        <div class="card-image card-image-contain">
-          <img src="assets/projects/reservafacil-mockup.png" alt="Reserva Fácil">
+        <div class="card-image">
+          <img src="assets/projects/reservafacil-hero.png" alt="Reserva Fácil" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
-            <span>02 · Automação</span>
+            <span>02 · Produto próprio</span>
+            <span class="card-status status-validation">Em desenvolvimento</span>
           </div>
           <h3 class="card-title">Reserva Fácil</h3>
-          <p class="card-desc">Vouchers em PDF gerados em 1 clique para agências de turismo.</p>
+          <p class="card-desc">Projeto próprio que automatiza sistema de reservas para agências de turismo. Apps Script gera vouchers em PDF com 1 clique a partir do formulário do cliente.</p>
           <div class="card-tags">
-            <span class="card-tag">Python</span>
-            <span class="card-tag">PDF</span>
-            <span class="card-tag">Web App</span>
+            <span class="card-tag">Apps Script</span>
+            <span class="card-tag">Google Sheets</span>
+            <span class="card-tag">PDF Auto</span>
+            <span class="card-tag">Web</span>
           </div>
         </div>
       </a>
-      
-      <!-- Project 03 — Tableau Influenza (MEDIUM) -->
-      <a href="https://public.tableau.com/app/profile/lorena.leone/vizzes" target="_blank" rel="noopener" class="project-card card-medium">
+
+      <!-- 03 — Tableau Influenza -->
+      <a href="https://public.tableau.com/app/profile/lorena.leone/vizzes" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="assets/projects/tableau-influenza.png" alt="Tableau Influenza Analysis">
+          <img src="assets/projects/tableau-influenza.png" alt="Tableau Influenza Analysis" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -139,12 +150,12 @@
           </div>
         </div>
       </a>
-      
-      <!-- Project 04 — VG Sales Storytelling (MEDIUM) -->
-      <a href="https://drive.google.com/file/d/12c0wYuaPLEmKb8VxXb9Zh82TtdMk1EmB/view?usp=sharing" target="_blank" rel="noopener" class="project-card card-medium">
+
+      <!-- 04 — VG Sales -->
+      <a href="https://drive.google.com/file/d/12c0wYuaPLEmKb8VxXb9Zh82TtdMk1EmB/view?usp=sharing" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="assets/projects/vgsales-forecast.png" alt="VG Sales Data Storytelling">
+          <img src="assets/projects/vgsales-forecast.png" alt="VG Sales Data Storytelling" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -159,12 +170,12 @@
           </div>
         </div>
       </a>
-      
-      <!-- Project 05 — CRM Tracker (MEDIUM) -->
-      <a href="#" class="project-card card-medium">
+
+      <!-- 05 — CRM Tracker (link Etsy) -->
+      <a href="https://www.etsy.com/listing/4494347003/freelance-crm-tracker-google-sheets" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="assets/projects/crm-tracker.png" alt="CRM Tracker">
+          <img src="assets/projects/crm-tracker.png" alt="CRM Tracker" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -172,7 +183,7 @@
             <span class="card-status status-marketplace">No Etsy</span>
           </div>
           <h3 class="card-title">CRM Tracker</h3>
-          <p class="card-desc">Template profissional de CRM em Google Sheets para freelancers e pequenas empresas. Pipeline, dashboard e automações.</p>
+          <p class="card-desc">Template profissional de CRM em Google Sheets para freelancers e pequenas empresas. Pipeline, dashboard e automações. Comercializado no Etsy.</p>
           <div class="card-tags">
             <span class="card-tag">Google Sheets</span>
             <span class="card-tag">Apps Script</span>
@@ -180,12 +191,12 @@
           </div>
         </div>
       </a>
-      
-      <!-- Project 06 — Dashboard Concursos (MEDIUM) -->
-      <a href="#" class="project-card card-medium">
+
+      <!-- 06 — Dashboard Concursos -->
+      <a href="#" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="assets/projects/dashboard-concursos.png" alt="Dashboard de Estudos para Concursos">
+          <img src="assets/projects/dashboard-concursos.png" alt="Dashboard de Estudos para Concursos" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -201,12 +212,12 @@
           </div>
         </div>
       </a>
-      
-      <!-- Project 07 — Instacart (MEDIUM) -->
-      <a href="https://github.com/lorenaleone/instacart.py" target="_blank" rel="noopener" class="project-card card-medium">
+
+      <!-- 07 — Instacart -->
+      <a href="https://github.com/lorenaleone/instacart.py" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="assets/projects/instacart-heatmap.png" alt="Instacart Analysis">
+          <img src="assets/projects/instacart-heatmap.png" alt="Instacart Analysis" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -222,12 +233,12 @@
           </div>
         </div>
       </a>
-      
-      <!-- Project 08 — Rockbuster SQL (MEDIUM) -->
-      <a href="https://github.com/lorenaleone/rockbuster.sql" target="_blank" rel="noopener" class="project-card card-medium">
+
+      <!-- 08 — Rockbuster SQL -->
+      <a href="https://github.com/lorenaleone/rockbuster.sql" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="assets/projects/rockbuster-charts.png" alt="Rockbuster SQL Analysis">
+          <img src="assets/projects/rockbuster-charts.png" alt="Rockbuster SQL Analysis" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -242,12 +253,14 @@
           </div>
         </div>
       </a>
-      
+
     </div>
   </div>
+
+  <div class="carousel-dots" id="carouselDots"></div>
 </section>
 
-<!-- SKILLS — MINIMAL -->
+<!-- SKILLS -->
 <section class="section skills" id="capacidades">
   <div class="section-inner">
     <div class="section-label">Capacidades</div>
@@ -256,18 +269,18 @@
     <div class="skills-grid">
       <div class="skill-block">
         <div class="skill-num">/ 01</div>
-        <h3>Análise de Dados</h3>
-        <p>Python, Pandas, SQL, Power BI, Looker Studio.</p>
+        <h3>Data Analysis</h3>
+        <p>Python, Pandas, Seaborn, Matplotlib, SQL, Power BI, Looker Studio.</p>
       </div>
       <div class="skill-block">
         <div class="skill-num">/ 02</div>
-        <h3>Automação</h3>
-        <p>Apps Script, Google APIs, Stripe, Webhooks.</p>
+        <h3>Automation</h3>
+        <p>Apps Script, Google APIs, Stripe, Webhooks, server deploy.</p>
       </div>
       <div class="skill-block">
         <div class="skill-num">/ 03</div>
-        <h3>Visualização</h3>
-        <p>Tableau, Power BI, Looker Studio, Google Sheets.</p>
+        <h3>Visualization</h3>
+        <p>Tableau, Power BI, Looker Studio, Google Sheets, Excel.</p>
       </div>
       <div class="skill-block">
         <div class="skill-num">/ 04</div>
@@ -286,12 +299,22 @@
       Tem um projeto<br>
       em <em>mente</em>?
     </h2>
-    <a href="mailto:lorenaleone.analyst@gmail.com" class="contact-email">lorenaleone.analyst@gmail.com</a>
+    <p class="contact-subtitle">Me conta sobre o seu projeto. Respondo em até 24 horas.</p>
+    
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <input type="text" class="form-input" name="nome" placeholder="Seu nome" required>
+        <input type="email" class="form-input" name="email" placeholder="Seu email" required>
+      </div>
+      <input type="text" class="form-input" name="assunto" placeholder="Assunto" required>
+      <textarea class="form-textarea" name="mensagem" placeholder="Conte sobre seu projeto..." required></textarea>
+      <button type="submit" class="form-submit">Enviar mensagem →</button>
+    </form>
+    
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/lleone" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
       <a href="https://github.com/lorenaleone" target="_blank" rel="noopener" class="contact-link">GitHub</a>
       <a href="https://public.tableau.com/app/profile/lorena.leone/vizzes" target="_blank" rel="noopener" class="contact-link">Tableau</a>
-      <a href="mailto:lorenaleone.analyst@gmail.com" class="contact-link">Email</a>
     </div>
   </div>
 </section>
@@ -300,6 +323,109 @@
 <footer class="footer">
   © 2026 LORENA LEONE
 </footer>
+
+<script>
+// ============ CAROUSEL ============
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const cards = track.querySelectorAll('.project-card');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const counter = document.querySelector('.carousel-counter .current');
+  const dotsWrap = document.getElementById('carouselDots');
+  
+  let current = 0;
+  let cardsPerView = 2;
+  let totalSlides = Math.ceil(cards.length / cardsPerView);
+  
+  function calcCardsPerView() {
+    if (window.innerWidth <= 1024) return 1;
+    return 2;
+  }
+  
+  function buildDots() {
+    cardsPerView = calcCardsPerView();
+    totalSlides = Math.ceil(cards.length / cardsPerView);
+    dotsWrap.innerHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    }
+  }
+  
+  function update() {
+    const card = cards[0];
+    const cardWidth = card.offsetWidth;
+    const gap = 24;
+    const offset = current * (cardWidth + gap) * cardsPerView;
+    track.style.transform = `translateX(-${offset}px)`;
+    
+    // Counter
+    const startCard = current * cardsPerView + 1;
+    counter.textContent = String(startCard).padStart(2, '0');
+    
+    // Dots
+    document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    
+    // Buttons state
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current >= totalSlides - 1;
+  }
+  
+  function goTo(index) {
+    current = Math.max(0, Math.min(index, totalSlides - 1));
+    update();
+  }
+  
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+  
+  // Touch/swipe
+  let startX = 0, deltaX = 0;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
+  track.addEventListener('touchmove', e => { deltaX = e.touches[0].clientX - startX; }, {passive: true});
+  track.addEventListener('touchend', () => {
+    if (Math.abs(deltaX) > 50) {
+      goTo(current + (deltaX < 0 ? 1 : -1));
+    }
+    deltaX = 0;
+  });
+  
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+  
+  // Resize
+  window.addEventListener('resize', () => {
+    buildDots();
+    current = 0;
+    update();
+  });
+  
+  buildDots();
+  update();
+})();
+
+// ============ CONTACT FORM ============
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const subject = encodeURIComponent('[Portfolio] ' + data.get('assunto'));
+  const body = encodeURIComponent(
+    'Nome: ' + data.get('nome') + '\n' +
+    'Email: ' + data.get('email') + '\n\n' +
+    data.get('mensagem')
+  );
+  window.location.href = 'mailto:lorenaleone.analyst@gmail.com?subject=' + subject + '&body=' + body;
+});
+</script>
 
 </body>
 </html>

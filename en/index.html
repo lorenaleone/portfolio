@@ -4,13 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lorena Leone — Data Analyst & Builder</title>
-<meta name="description" content="Data analyst and full-stack developer. Automation, dashboards and digital products.">
+<meta name="description" content="Data analyst and developer. Automation, dashboards and digital products.">
 <link rel="stylesheet" href="../assets/style.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='serif' font-style='italic' fill='%23d4a574'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='serif' font-style='italic' fill='%23c9a86a'%3EL%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <a href="../index.html" class="nav-logo">Lorena <span>Leone</span></a>
   <div class="nav-right">
@@ -24,7 +23,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
@@ -44,12 +42,11 @@
       </div>
     </div>
     <div class="hero-photo">
-      <img src="../assets/profile.jpg" alt="Lorena Leone" class="hero-photo-img" onerror="this.src='../assets/avatar-placeholder.png'">
+      <img src="../assets/profile.jpg" alt="Lorena Leone" class="hero-photo-img">
     </div>
   </div>
 </section>
 
-<!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat-item">
     <div class="stat-num">8+</div>
@@ -69,18 +66,26 @@
   </div>
 </div>
 
-<!-- PROJECTS -->
 <section class="projects" id="projects">
-  <div class="projects-inner">
-    <div class="section-label">Selected work</div>
-    <h2 class="section-title">Recent <em>projects</em>.</h2>
-    
-    <div class="projects-grid">
-      
-      <a href="https://www.thereputeiq.com" target="_blank" rel="noopener" class="project-card card-large">
+  <div class="projects-header">
+    <div class="projects-header-left">
+      <div class="section-label">Selected work</div>
+      <h2 class="section-title">Recent <em>projects</em>.</h2>
+    </div>
+    <div class="carousel-controls">
+      <span class="carousel-counter"><span class="current">01</span> / <span class="total">08</span></span>
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous">←</button>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next">→</button>
+    </div>
+  </div>
+
+  <div class="carousel-track-wrap">
+    <div class="carousel-track" id="carouselTrack">
+
+      <a href="https://www.thereputeiq.com" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="../assets/projects/thereputeiq-hero.png" alt="The Repute IQ">
+          <img src="../assets/projects/thereputeiq-hero.png" alt="The Repute IQ" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -97,30 +102,32 @@
           </div>
         </div>
       </a>
-      
-      <a href="https://www.thereputeiq.com/reservafacil" target="_blank" rel="noopener" class="project-card card-small">
+
+      <a href="https://www.thereputeiq.com/reservafacil" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
-        <div class="card-image card-image-contain">
-          <img src="../assets/projects/reservafacil-mockup.png" alt="Reserva Fácil">
+        <div class="card-image">
+          <img src="../assets/projects/reservafacil-hero.png" alt="Reserva Fácil" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
-            <span>02 · Automation</span>
+            <span>02 · Own product</span>
+            <span class="card-status status-validation">In development</span>
           </div>
           <h3 class="card-title">Reserva Fácil</h3>
-          <p class="card-desc">PDF vouchers generated in 1 click for travel agencies.</p>
+          <p class="card-desc">My own project automating booking systems for travel agencies. Apps Script generates PDF vouchers in 1 click from the client form.</p>
           <div class="card-tags">
-            <span class="card-tag">Python</span>
-            <span class="card-tag">PDF</span>
-            <span class="card-tag">Web App</span>
+            <span class="card-tag">Apps Script</span>
+            <span class="card-tag">Google Sheets</span>
+            <span class="card-tag">PDF Auto</span>
+            <span class="card-tag">Web</span>
           </div>
         </div>
       </a>
-      
-      <a href="https://public.tableau.com/app/profile/lorena.leone/vizzes" target="_blank" rel="noopener" class="project-card card-medium">
+
+      <a href="https://public.tableau.com/app/profile/lorena.leone/vizzes" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="../assets/projects/tableau-influenza.png" alt="Tableau Influenza Analysis">
+          <img src="../assets/projects/tableau-influenza.png" alt="Tableau Influenza Analysis" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -136,11 +143,11 @@
           </div>
         </div>
       </a>
-      
-      <a href="https://drive.google.com/file/d/12c0wYuaPLEmKb8VxXb9Zh82TtdMk1EmB/view?usp=sharing" target="_blank" rel="noopener" class="project-card card-medium">
+
+      <a href="https://drive.google.com/file/d/12c0wYuaPLEmKb8VxXb9Zh82TtdMk1EmB/view?usp=sharing" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="../assets/projects/vgsales-forecast.png" alt="VG Sales Data Storytelling">
+          <img src="../assets/projects/vgsales-forecast.png" alt="VG Sales Data Storytelling" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -155,11 +162,11 @@
           </div>
         </div>
       </a>
-      
-      <a href="#" class="project-card card-medium">
+
+      <a href="https://www.etsy.com/listing/4494347003/freelance-crm-tracker-google-sheets" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="../assets/projects/crm-tracker.png" alt="CRM Tracker">
+          <img src="../assets/projects/crm-tracker.png" alt="CRM Tracker" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -167,7 +174,7 @@
             <span class="card-status status-marketplace">On Etsy</span>
           </div>
           <h3 class="card-title">CRM Tracker</h3>
-          <p class="card-desc">Professional CRM template in Google Sheets for freelancers and small businesses. Pipeline, dashboard and automations.</p>
+          <p class="card-desc">Professional CRM template in Google Sheets for freelancers and small businesses. Pipeline, dashboard and automations. Sold on Etsy.</p>
           <div class="card-tags">
             <span class="card-tag">Google Sheets</span>
             <span class="card-tag">Apps Script</span>
@@ -175,11 +182,11 @@
           </div>
         </div>
       </a>
-      
-      <a href="#" class="project-card card-medium">
+
+      <a href="#" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="../assets/projects/dashboard-concursos.png" alt="Study Dashboard">
+          <img src="../assets/projects/dashboard-concursos.png" alt="Study Dashboard" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -195,11 +202,11 @@
           </div>
         </div>
       </a>
-      
-      <a href="https://github.com/lorenaleone/instacart.py" target="_blank" rel="noopener" class="project-card card-medium">
+
+      <a href="https://github.com/lorenaleone/instacart.py" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="../assets/projects/instacart-heatmap.png" alt="Instacart Analysis">
+          <img src="../assets/projects/instacart-heatmap.png" alt="Instacart Analysis" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -215,11 +222,11 @@
           </div>
         </div>
       </a>
-      
-      <a href="https://github.com/lorenaleone/rockbuster.sql" target="_blank" rel="noopener" class="project-card card-medium">
+
+      <a href="https://github.com/lorenaleone/rockbuster.sql" target="_blank" rel="noopener" class="project-card">
         <div class="card-arrow">↗</div>
         <div class="card-image">
-          <img src="../assets/projects/rockbuster-charts.png" alt="Rockbuster SQL Analysis">
+          <img src="../assets/projects/rockbuster-charts.png" alt="Rockbuster SQL Analysis" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-meta">
@@ -234,12 +241,13 @@
           </div>
         </div>
       </a>
-      
+
     </div>
   </div>
+
+  <div class="carousel-dots" id="carouselDots"></div>
 </section>
 
-<!-- SKILLS -->
 <section class="section skills" id="capabilities">
   <div class="section-inner">
     <div class="section-label">Capabilities</div>
@@ -249,17 +257,17 @@
       <div class="skill-block">
         <div class="skill-num">/ 01</div>
         <h3>Data Analysis</h3>
-        <p>Python, Pandas, SQL, Power BI, Looker Studio.</p>
+        <p>Python, Pandas, Seaborn, Matplotlib, SQL, Power BI, Looker Studio.</p>
       </div>
       <div class="skill-block">
         <div class="skill-num">/ 02</div>
         <h3>Automation</h3>
-        <p>Apps Script, Google APIs, Stripe, Webhooks.</p>
+        <p>Apps Script, Google APIs, Stripe, Webhooks, server deploy.</p>
       </div>
       <div class="skill-block">
         <div class="skill-num">/ 03</div>
         <h3>Visualization</h3>
-        <p>Tableau, Power BI, Looker Studio, Google Sheets.</p>
+        <p>Tableau, Power BI, Looker Studio, Google Sheets, Excel.</p>
       </div>
       <div class="skill-block">
         <div class="skill-num">/ 04</div>
@@ -270,7 +278,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div class="contact-eyebrow">Let's talk</div>
@@ -278,20 +285,122 @@
       Got a project<br>
       in <em>mind</em>?
     </h2>
-    <a href="mailto:lorenaleone.analyst@gmail.com" class="contact-email">lorenaleone.analyst@gmail.com</a>
+    <p class="contact-subtitle">Tell me about your project. I reply within 24 hours.</p>
+    
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <input type="text" class="form-input" name="nome" placeholder="Your name" required>
+        <input type="email" class="form-input" name="email" placeholder="Your email" required>
+      </div>
+      <input type="text" class="form-input" name="assunto" placeholder="Subject" required>
+      <textarea class="form-textarea" name="mensagem" placeholder="Tell me about your project..." required></textarea>
+      <button type="submit" class="form-submit">Send message →</button>
+    </form>
+    
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/lleone" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
       <a href="https://github.com/lorenaleone" target="_blank" rel="noopener" class="contact-link">GitHub</a>
       <a href="https://public.tableau.com/app/profile/lorena.leone/vizzes" target="_blank" rel="noopener" class="contact-link">Tableau</a>
-      <a href="mailto:lorenaleone.analyst@gmail.com" class="contact-link">Email</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   © 2026 LORENA LEONE
 </footer>
+
+<script>
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const cards = track.querySelectorAll('.project-card');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const counter = document.querySelector('.carousel-counter .current');
+  const dotsWrap = document.getElementById('carouselDots');
+  
+  let current = 0;
+  let cardsPerView = 2;
+  let totalSlides = Math.ceil(cards.length / cardsPerView);
+  
+  function calcCardsPerView() {
+    if (window.innerWidth <= 1024) return 1;
+    return 2;
+  }
+  
+  function buildDots() {
+    cardsPerView = calcCardsPerView();
+    totalSlides = Math.ceil(cards.length / cardsPerView);
+    dotsWrap.innerHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    }
+  }
+  
+  function update() {
+    const card = cards[0];
+    const cardWidth = card.offsetWidth;
+    const gap = 24;
+    const offset = current * (cardWidth + gap) * cardsPerView;
+    track.style.transform = `translateX(-${offset}px)`;
+    
+    const startCard = current * cardsPerView + 1;
+    counter.textContent = String(startCard).padStart(2, '0');
+    
+    document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current >= totalSlides - 1;
+  }
+  
+  function goTo(index) {
+    current = Math.max(0, Math.min(index, totalSlides - 1));
+    update();
+  }
+  
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+  
+  let startX = 0, deltaX = 0;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
+  track.addEventListener('touchmove', e => { deltaX = e.touches[0].clientX - startX; }, {passive: true});
+  track.addEventListener('touchend', () => {
+    if (Math.abs(deltaX) > 50) goTo(current + (deltaX < 0 ? 1 : -1));
+    deltaX = 0;
+  });
+  
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+  
+  window.addEventListener('resize', () => {
+    buildDots();
+    current = 0;
+    update();
+  });
+  
+  buildDots();
+  update();
+})();
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const subject = encodeURIComponent('[Portfolio] ' + data.get('assunto'));
+  const body = encodeURIComponent(
+    'Name: ' + data.get('nome') + '\n' +
+    'Email: ' + data.get('email') + '\n\n' +
+    data.get('mensagem')
+  );
+  window.location.href = 'mailto:lorenaleone.analyst@gmail.com?subject=' + subject + '&body=' + body;
+});
+</script>
 
 </body>
 </html>
