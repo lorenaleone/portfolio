@@ -196,9 +196,7 @@ body::before {
   font-weight: 400;
   letter-spacing: -0.04em;
   animation: fadeUp 0.8s ease 0.1s backwards;
-  margin-top: -60px;
-  margin-bottom: 20px;
-  display: block;
+  margin-top: 0px;
   position: relative;
   z-index: 1;
 }
