@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2563EB">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Reserva Fácil">
+  <meta name="description" content="Gerador de vouchers turísticos">
+
+  <title>Reserva Fácil</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ══════════════════════════════════════════════
+       TELA 1 — LOGIN
+  ══════════════════════════════════════════════ -->
+  <div id="screen-login" class="screen login-screen">
+    <div class="login-logo">
+      <span class="logo-icon">🗺️</span>
+      <h1>Reserva Fácil</h1>
+      <p>Sistema de Vouchers Turísticos</p>
+    </div>
+
+    <div class="login-card">
+      <h2>Entrar</h2>
+      <form id="form-login" novalidate>
+        <div class="form-group">
+          <label for="input-agencia-id">ID da Agência</label>
+          <input id="input-agencia-id" type="text" placeholder="suaagencia_xxxx"
+            autocomplete="username" autocorrect="off" autocapitalize="none" spellcheck="false" required>
+        </div>
+        <div class="form-group">
+          <label for="input-token">Token de Acesso</label>
+          <input id="input-token" type="password" placeholder="••••••••••••••••"
+            autocomplete="current-password" required>
+        </div>
+        <button id="btn-login" type="submit" class="btn btn-primary">
+          <span class="btn-text">Entrar</span>
+        </button>
+      </form>
+    </div>
+
+    <div style="text-align:center">
+      <p class="text-muted" style="margin-bottom:10px">Ainda não tem conta?</p>
+      <button id="btn-open-wizard" class="btn btn-secondary" style="width:100%;max-width:400px">
+        ✨ Configurar Nova Agência
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       TELA 2 — GERAR VOUCHER
+  ══════════════════════════════════════════════ -->
+  <div id="screen-voucher" class="screen voucher-form-screen">
+    <header class="app-header">
+      <div>
+        <h1>Reserva Fácil</h1>
+        <div id="header-agency-name" class="agency-name"></div>
+      </div>
+      <button id="btn-logout" class="btn-icon" title="Sair" aria-label="Sair">⏏</button>
+    </header>
+
+    <div class="main-content">
+      <form id="form-voucher" novalidate>
+        <div class="card">
+          <div class="card-title">🗺️ Passeio</div>
+          <div class="form-group">
+            <label for="select-passeio">Selecione o Passeio *</label>
+            <div class="passeio-select-wrapper">
+              <select id="select-passeio" required>
+                <option value="">Carregando...</option>
+              </select>
+            </div>
+            <div id="passeio-preco" class="passeio-preco hidden"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">👤 Cliente</div>
+          <div class="form-group">
+            <label for="input-cliente-nome">Nome do Cliente *</label>
+            <input id="input-cliente-nome" type="text" placeholder="Nome completo"
+              autocomplete="off" required>
+          </div>
+          <div class="form-group">
+            <label for="input-data">Data do Passeio *</label>
+            <input id="input-data" type="date" required>
+          </div>
+          <div class="form-group">
+            <label for="input-acompanhantes">Acompanhantes (além do titular)</label>
+            <input id="input-acompanhantes" type="number" min="0" max="20"
+              placeholder="0" value="0">
+          </div>
+          <div class="form-group">
+            <label for="input-total">Valor Total (R$)</label>
+            <input id="input-total" type="number" min="0" step="0.01"
+              placeholder="Calculado automaticamente">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-bottom:8px">
+          <span class="btn-text">🎫 Gerar Voucher</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       TELA 3 — PREVIEW DO VOUCHER
+  ══════════════════════════════════════════════ -->
+  <div id="screen-preview" class="screen preview-screen">
+    <header class="app-header">
+      <button id="btn-back-from-preview" class="btn-icon" aria-label="Voltar">←</button>
+      <div id="preview-voucher-num" style="font-size:14px;font-weight:600;flex:1;text-align:center"></div>
+      <div style="width:32px"></div>
+    </header>
+
+    <div class="pdf-viewer-wrapper">
+      <iframe id="pdf-preview-iframe" class="pdf-iframe" title="Preview do Voucher"></iframe>
+    </div>
+
+    <div class="preview-actions">
+      <button id="btn-share-pdf" class="btn btn-secondary hidden">📤 Compartilhar</button>
+      <button id="btn-download-pdf" class="btn btn-primary">⬇️ Baixar PDF</button>
+      <button id="btn-novo-voucher" class="btn btn-secondary">+ Novo</button>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       TELA 4 — SETUP WIZARD
+  ══════════════════════════════════════════════ -->
+  <div id="screen-wizard" class="screen wizard-screen">
+    <header class="app-header">
+      <button id="btn-close-wizard" class="btn-icon" aria-label="Fechar">✕</button>
+      <h1>Nova Agência</h1>
+      <div style="width:32px"></div>
+    </header>
+
+    <div id="wizard-steps" class="wizard-steps"></div>
+
+    <div id="wizard-content" class="wizard-content"></div>
+
+    <div class="wizard-nav">
+      <button id="btn-wizard-back" class="btn btn-secondary hidden">← Voltar</button>
+      <button id="btn-wizard-next" class="btn btn-primary">Próximo →</button>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       TELA 5 — SETUP CONCLUÍDO
+  ══════════════════════════════════════════════ -->
+  <div id="screen-wizard-success" class="screen" style="padding:32px 24px;gap:20px;justify-content:center">
+    <div class="success-banner">
+      <div class="icon">🎉</div>
+      <h3>Agência criada com sucesso!</h3>
+      <p>Credenciais enviadas para seu email.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Suas Credenciais</div>
+      <div class="info-box">
+        <strong>Guarde com segurança.</strong> Você precisará desses dados para entrar no sistema.
+      </div>
+      <div class="creds-box">
+        <div class="cred-row">
+          <span class="cred-label">ID da Agência</span>
+          <span id="success-agencia-id" class="cred-value"></span>
+        </div>
+        <div class="cred-row">
+          <span class="cred-label">Token</span>
+          <span id="success-token" class="cred-value" style="word-break:break-all"></span>
+        </div>
+      </div>
+    </div>
+
+    <button id="btn-ir-login" class="btn btn-primary" style="width:100%">
+      Ir para o Login →
+    </button>
+  </div>
+
+</div><!-- /.app -->
+
+
+<!-- Loading overlay -->
+<div id="loading-overlay" class="loading-overlay hidden">
+  <div class="spinner"></div>
+  <p id="loading-msg">Aguarde...</p>
+</div>
+
+<!-- Toast container -->
+<div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+/* ============================================================
+   styles.css — Reserva Fácil PWA — Mobile-first
+   ============================================================ */
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:    #2563EB;
+  --primary-dk: #1E40AF;
+  --primary-lt: #DBEAFE;
+  --success:    #059669;
+  --danger:     #DC2626;
+  --warning:    #D97706;
+  --bg:         #0f172a;
+  --surface:    #1e293b;
+  --surface2:   #334155;
+  --border:     #475569;
+  --text:       #f1f5f9;
+  --text-muted: #94a3b8;
+  --radius:     12px;
+  --radius-sm:  8px;
+  --shadow:     0 4px 24px rgba(0,0,0,.4);
+  --transition: .2s ease;
+  --font:       -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* ── Layout principal ─────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── Telas ────────────────────────────────────────────────── */
+.screen { display: none; flex-direction: column; min-height: 100dvh; }
+.screen.active { display: flex; }
+
+/* ── Header da app ────────────────────────────────────────── */
+.app-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.app-header .agency-name {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 20px;
+  line-height: 1;
+  transition: color var(--transition);
+}
+.btn-icon:hover { color: var(--text); }
+
+/* ── Tela de Login ────────────────────────────────────────── */
+.login-screen {
+  background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
+  justify-content: center;
+  align-items: center;
+  padding: 32px 24px;
+  gap: 32px;
+}
+
+.login-logo {
+  text-align: center;
+}
+
+.login-logo .logo-icon {
+  font-size: 56px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.login-logo h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -.5px;
+}
+
+.login-logo p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.login-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow);
+}
+
+.login-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* ── Formulários ──────────────────────────────────────────── */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 16px; /* Previne zoom no iOS */
+  color: var(--text);
+  font-family: var(--font);
+  transition: border-color var(--transition);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .2);
+}
+
+.form-group input::placeholder { color: var(--text-muted); }
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2394a3b8' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ── Botões ───────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  width: 100%;
+}
+.btn-primary:hover:not(:disabled) { background: var(--primary-dk); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+}
+.btn-secondary:hover:not(:disabled) { border-color: var(--primary); color: var(--primary); }
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1.5px solid var(--danger);
+}
+
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.btn-loading .btn-text { display: none; }
+.btn-loading::after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+/* ── Main content ─────────────────────────────────────────── */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Cards ────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+/* ── Tela de Voucher ──────────────────────────────────────── */
+.voucher-form-screen .main-content { padding-bottom: 100px; }
+
+.passeio-select-wrapper {
+  position: relative;
+}
+
+.passeio-preco {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── Preview do Voucher ───────────────────────────────────── */
+.preview-screen {
+  background: var(--bg);
+}
+
+.preview-actions {
+  padding: 16px 20px;
+  display: flex;
+  gap: 10px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  position: sticky;
+  bottom: 0;
+}
+
+.preview-actions .btn { flex: 1; }
+
+.pdf-viewer-wrapper {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.pdf-iframe {
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  min-height: 500px;
+}
+
+/* ── Setup Wizard ─────────────────────────────────────────── */
+.wizard-screen {
+  background: var(--bg);
+}
+
+.wizard-steps {
+  display: flex;
+  padding: 16px 20px;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.wizard-steps::-webkit-scrollbar { display: none; }
+
+.wizard-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  background: transparent;
+  cursor: default;
+}
+
+.wizard-step.active {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-lt)22;
+}
+
+.wizard-step.done {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.wizard-step .step-num {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.wizard-step.active .step-num { background: var(--primary); color: #fff; }
+.wizard-step.done .step-num   { background: var(--success);  color: #fff; }
+
+.wizard-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.wizard-nav {
+  padding: 16px 20px;
+  display: flex;
+  gap: 10px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+.wizard-nav .btn { flex: 1; }
+
+/* ── Passeio textarea (lista) ─────────────────────────────── */
+.passeios-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 5px;
+}
+
+/* ── Color picker ─────────────────────────────────────────── */
+.color-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.color-row input[type="color"] {
+  width: 44px;
+  height: 44px;
+  padding: 2px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.color-row .color-hex {
+  flex: 1;
+}
+
+/* ── Alerta / Toast ───────────────────────────────────────── */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+  width: calc(100% - 40px);
+  max-width: 440px;
+}
+
+.toast {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow);
+  animation: slideUp .25s ease;
+  pointer-events: all;
+}
+
+.toast.success { border-left: 4px solid var(--success); }
+.toast.error   { border-left: 4px solid var(--danger); }
+.toast.info    { border-left: 4px solid var(--primary); }
+
+/* ── Loading overlay ──────────────────────────────────────── */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+.loading-overlay.hidden { display: none; }
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255,255,255,.2);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+.loading-overlay p {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* ── Sucesso badge ────────────────────────────────────────── */
+.success-banner {
+  background: var(--success)1a;
+  border: 1.5px solid var(--success);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.success-banner .icon { font-size: 40px; margin-bottom: 8px; }
+.success-banner h3 { font-size: 18px; font-weight: 700; color: var(--success); }
+.success-banner p  { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+
+/* ── Info box ─────────────────────────────────────────────── */
+.info-box {
+  background: var(--primary)1a;
+  border: 1px solid var(--primary)55;
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.info-box strong { color: var(--text); }
+
+/* ── Credentials display ──────────────────────────────────── */
+.creds-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.creds-box .cred-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.creds-box .cred-row:last-child { border-bottom: none; }
+.creds-box .cred-label { color: var(--text-muted); font-size: 12px; }
+.creds-box .cred-value { color: var(--primary); font-weight: 600; word-break: break-all; }
+
+/* ── Animações ────────────────────────────────────────────── */
+@keyframes spin    { to { transform: rotate(360deg); } }
+@keyframes slideUp { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform:none; } }
+@keyframes fadeIn  { from { opacity:0; } to { opacity:1; } }
+
+/* ── Utilities ────────────────────────────────────────────── */
+.hidden  { display: none !important; }
+.mt-8    { margin-top: 8px; }
+.mt-16   { margin-top: 16px; }
+.mt-24   { margin-top: 24px; }
+.gap-10  { gap: 10px; }
+.flex    { display: flex; }
+.col     { flex-direction: column; }
+.text-muted { color: var(--text-muted); font-size: 13px; }
+
+/* ── Responsivo (telas maiores ficam centralizadas) ───────── */
+@media (min-width: 481px) {
+  .app { border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+}
+
+/* ── Safe area para iPhone com notch ─────────────────────── */
+@supports (padding: max(0px)) {
+  .app-header { padding-top: max(16px, env(safe-area-inset-top)); }
+  .preview-actions, .wizard-nav {
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
