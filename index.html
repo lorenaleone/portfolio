@@ -13,8 +13,8 @@
 <nav class="nav">
   <a href="#" class="nav-logo">Lorena <span>Leone</span></a>
   <div class="nav-right">
-    <a href="#projetos" class="nav-link">Projetos</a>
     <a href="#capacidades" class="nav-link">Habilidades</a>
+    <a href="#projetos" class="nav-link">Projetos</a>
     <a href="#contato" class="nav-link">Contato</a>
     <div class="lang-switch">
       <a href="index.html" class="active">PT</a>
@@ -45,6 +45,36 @@
   </div>
 </section>
 
+<section class="section skills" id="capacidades">
+  <div class="section-inner">
+    <div class="section-label">Habilidades</div>
+    <h2 class="section-title">Em que posso te <em>ajudar</em>?</h2>
+
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-num">/ 01</div>
+        <h3>Data Analysis</h3>
+        <p>Python, Pandas, Seaborn, Matplotlib, NumPy, SQL.</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-num">/ 02</div>
+        <h3>Automation</h3>
+        <p>Apps Script, Google APIs, Stripe, Webhooks, server deploy.</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-num">/ 03</div>
+        <h3>Visualization</h3>
+        <p>Tableau, Power BI, Looker Studio, Google Sheets, Excel.</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-num">/ 04</div>
+        <h3>Web Dev</h3>
+        <p>HTML, CSS, JavaScript, Flask, Python backend.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="projects" id="projetos">
   <div class="projects-header">
     <div class="projects-header-left">
@@ -53,10 +83,10 @@
     </div>
   </div>
 
-  <button class="carousel-btn" id="prevBtn" aria-label="Anterior">←</button>
-  <button class="carousel-btn" id="nextBtn" aria-label="Próximo">→</button>
-
   <div class="carousel-track-wrap">
+    <button class="carousel-btn" id="prevBtn" aria-label="Anterior">←</button>
+    <button class="carousel-btn" id="nextBtn" aria-label="Próximo">→</button>
+
     <div class="carousel-track" id="carouselTrack">
 
       <a href="https://www.thereputeiq.com" target="_blank" rel="noopener" class="project-card">
@@ -180,38 +210,8 @@
     </div>
   </div>
 
-  <div class="carousel-counter"><span class="current">01</span> / 08</div>
+  <div class="carousel-counter"><span class="current">01</span> / <span class="total">--</span></div>
   <div class="carousel-dots" id="carouselDots"></div>
-</section>
-
-<section class="section skills" id="capacidades">
-  <div class="section-inner">
-    <div class="section-label">Habilidades</div>
-    <h2 class="section-title">Em que posso te <em>ajudar</em>?</h2>
-    
-    <div class="skills-grid">
-      <div class="skill-block">
-        <div class="skill-num">/ 01</div>
-        <h3>Data Analysis</h3>
-        <p>Python, Pandas, Seaborn, Matplotlib, NumPy, SQL.</p>
-      </div>
-      <div class="skill-block">
-        <div class="skill-num">/ 02</div>
-        <h3>Automation</h3>
-        <p>Apps Script, Google APIs, Stripe, Webhooks, server deploy.</p>
-      </div>
-      <div class="skill-block">
-        <div class="skill-num">/ 03</div>
-        <h3>Visualization</h3>
-        <p>Tableau, Power BI, Looker Studio, Google Sheets, Excel.</p>
-      </div>
-      <div class="skill-block">
-        <div class="skill-num">/ 04</div>
-        <h3>Web Dev</h3>
-        <p>HTML, CSS, JavaScript, Flask, Python backend.</p>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section class="contact" id="contato">
@@ -222,7 +222,7 @@
       em <em>mente</em>?
     </h2>
     <p class="contact-subtitle">Me conta sobre o seu projeto.</p>
-    
+
     <form class="contact-form" id="contactForm">
       <div class="form-row">
         <input type="text" class="form-input" name="nome" placeholder="Seu nome" required>
@@ -232,7 +232,7 @@
       <textarea class="form-textarea" name="mensagem" placeholder="Conte sobre seu projeto..." required></textarea>
       <button type="submit" class="form-submit">Enviar mensagem →</button>
     </form>
-    
+
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/lleone" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
       <a href="https://github.com/lorenaleone" target="_blank" rel="noopener" class="contact-link">GitHub</a>
@@ -246,18 +246,21 @@
 <script>
 (function() {
   const track = document.getElementById('carouselTrack');
-  const cards = track.querySelectorAll('.project-card');
+  const cards = Array.from(track.querySelectorAll('.project-card'));
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const counter = document.querySelector('.carousel-counter .current');
+  const totalEl = document.querySelector('.carousel-counter .total');
   const dotsWrap = document.getElementById('carouselDots');
-  
+
   let current = 0;
-  const totalSlides = cards.length;
-  
+  const total = cards.length;
+
+  if (totalEl) totalEl.textContent = String(total).padStart(2, '0');
+
   function buildDots() {
     dotsWrap.innerHTML = '';
-    for (let i = 0; i < totalSlides; i++) {
+    for (let i = 0; i < total; i++) {
       const dot = document.createElement('button');
       dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
       dot.setAttribute('aria-label', 'Slide ' + (i + 1));
@@ -265,28 +268,62 @@
       dotsWrap.appendChild(dot);
     }
   }
-  
+
   function update() {
-    const cardWidth = cards[0].offsetWidth + 32;
-    track.style.transform = `translateX(-${current * cardWidth}px)`;
-    counter.textContent = String(current + 1).padStart(2, '0');
-    
-    document.querySelectorAll('.carousel-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === current);
+    const isMobile = window.innerWidth < 768;
+    const GAP = isMobile ? 220 : 370;
+
+    cards.forEach((card, i) => {
+      const offset = i - current;
+      const abs = Math.abs(offset);
+      const sign = offset >= 0 ? 1 : -1;
+
+      if (abs > 2) {
+        card.style.opacity = '0';
+        card.style.zIndex = '0';
+        card.style.pointerEvents = 'none';
+        card.style.borderColor = 'var(--border)';
+        card.style.boxShadow = 'none';
+        card.style.transform = `perspective(1200px) translateX(calc(-50% + ${sign * 3 * GAP}px)) translateY(-50%) rotateY(${sign * 65}deg) scale(0.6)`;
+        return;
+      }
+
+      const tx = offset * GAP;
+      const ry = offset === 0 ? 0 : sign * (abs === 1 ? 45 : 60);
+      const sc = abs === 0 ? 1 : abs === 1 ? 0.85 : 0.72;
+      const op = abs === 0 ? 1 : abs === 1 ? 0.7 : 0.5;
+
+      card.style.transform = `perspective(1200px) translateX(calc(-50% + ${tx}px)) translateY(-50%) rotateY(${ry}deg) scale(${sc})`;
+      card.style.zIndex = 10 - abs;
+      card.style.opacity = op;
+      card.style.pointerEvents = 'auto';
+      card.style.borderColor = abs === 0 ? 'var(--gold)' : 'var(--border)';
+      card.style.boxShadow = abs === 0 ? '0 30px 80px rgba(0,0,0,0.6)' : 'none';
     });
-    
+
+    counter.textContent = String(current + 1).padStart(2, '0');
+    document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
     prevBtn.disabled = current === 0;
-    nextBtn.disabled = current >= totalSlides - 1;
+    nextBtn.disabled = current >= total - 1;
   }
-  
+
   function goTo(index) {
-    current = Math.max(0, Math.min(index, totalSlides - 1));
+    current = Math.max(0, Math.min(index, total - 1));
     update();
   }
-  
+
+  cards.forEach((card, i) => {
+    card.addEventListener('click', (e) => {
+      if (i !== current) {
+        e.preventDefault();
+        goTo(i);
+      }
+    });
+  });
+
   prevBtn.addEventListener('click', () => goTo(current - 1));
   nextBtn.addEventListener('click', () => goTo(current + 1));
-  
+
   let startX = 0, deltaX = 0;
   track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
   track.addEventListener('touchmove', e => { deltaX = e.touches[0].clientX - startX; }, {passive: true});
@@ -294,14 +331,14 @@
     if (Math.abs(deltaX) > 50) goTo(current + (deltaX < 0 ? 1 : -1));
     deltaX = 0;
   });
-  
+
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft') goTo(current - 1);
     if (e.key === 'ArrowRight') goTo(current + 1);
   });
-  
+
   window.addEventListener('resize', update);
-  
+
   buildDots();
   update();
 })();
