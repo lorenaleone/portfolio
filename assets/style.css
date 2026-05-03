@@ -340,7 +340,7 @@ body::before {
   color: var(--gold);
 }
 
-/* ============ CAROUSEL — horizontal com setas laterais ============ */
+/* ============ CAROUSEL — Coverflow 3D ============ */
 .projects {
   padding: 100px 0;
   position: relative;
@@ -403,43 +403,46 @@ body::before {
   cursor: not-allowed;
 }
 
-#prevBtn { left: 20px; }
-#nextBtn { right: 20px; }
+#prevBtn { left: 16px; }
+#nextBtn { right: 16px; }
 
 .carousel-track-wrap {
   overflow: hidden;
-  padding: 0 100px;
   position: relative;
+  padding: 40px 0 20px;
 }
 
 .carousel-track {
-  display: flex;
-  gap: 32px;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  height: 490px;
+  width: 100%;
 }
 
-/* Cards MENORES (metade do tamanho anterior) */
 .project-card {
-  flex: 0 0 480px;
-  max-width: 480px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 480px;
   background: var(--bg-card);
   border-radius: 12px;
   overflow: hidden;
-  position: relative;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--border);
-  isolation: isolate;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s, border-color 0.3s;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s,
+              border-color 0.3s;
+  will-change: transform, opacity;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
   box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-  border-color: var(--gold);
 }
 
 .card-image {
@@ -799,9 +802,9 @@ body::before {
   .hero-title { margin-top: -50px; }
   
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
-  
-  .carousel-track-wrap { padding: 0 80px; }
-  .project-card { flex: 0 0 420px; max-width: 420px; }
+
+  .carousel-track { height: 460px; }
+  .project-card { width: 420px; }
   #prevBtn, #nextBtn { width: 48px; height: 48px; }
 }
 
@@ -820,15 +823,15 @@ body::before {
   .hero-title { margin-top: -40px; font-size: clamp(40px, 10vw, 60px); }
   .hero-tagline { font-size: 15px; }
   
-  .carousel-track-wrap { padding: 0 60px; }
-  .project-card { flex: 0 0 calc(100vw - 140px); max-width: 90vw; }
-  .card-image { height: 200px; }
-  .card-content { padding: 18px 20px 20px; }
-  .card-title { font-size: 22px; }
-  
-  #prevBtn, #nextBtn { width: 44px; height: 44px; font-size: 20px; }
-  #prevBtn { left: 10px; }
-  #nextBtn { right: 10px; }
+  .carousel-track { height: 380px; }
+  .project-card { width: calc(100vw - 100px); }
+  .card-image { height: 180px; }
+  .card-content { padding: 16px 18px 18px; }
+  .card-title { font-size: 20px; }
+
+  #prevBtn, #nextBtn { width: 40px; height: 40px; font-size: 18px; }
+  #prevBtn { left: 8px; }
+  #nextBtn { right: 8px; }
   
   .skills-grid { grid-template-columns: 1fr; gap: 24px; }
   
