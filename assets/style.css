@@ -591,6 +591,7 @@ body::before {
 
 /* ============ CERTIFICATIONS ============ */
 .certifications {
+  padding: 60px 32px;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: var(--bg-elevated);
@@ -601,55 +602,75 @@ body::before {
 .cert-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 32px;
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .cert-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--cream-faint);
-  white-space: nowrap;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cert-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.cert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
 }
 
 .cert-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   text-decoration: none;
   color: inherit;
-  padding: 10px 18px;
+  padding: 16px 20px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--bg-card);
-  transition: border-color 0.2s, background 0.2s;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cert-item:hover {
   border-color: var(--gold);
   background: var(--bg-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
 }
 
 .cert-logo {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
   object-fit: contain;
+  background: rgba(201, 168, 106, 0.1);
+  padding: 4px;
 }
 
 .cert-info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .cert-name {
-  font-size: 13px;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
   color: var(--cream);
 }
 
@@ -658,6 +679,21 @@ body::before {
   font-size: 10px;
   color: var(--cream-muted);
   letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .certifications {
+    padding: 40px 20px;
+  }
+
+  .cert-list {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-label::before {
+    display: none;
+  }
 }
 
 /* ============ SKILLS ============ */
