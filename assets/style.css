@@ -81,7 +81,6 @@ body::before {
   font-size: 18px;
   font-weight: 500;
   letter-spacing: -0.02em;
-  font-style: italic;
   color: var(--text);
   text-decoration: none;
 }
@@ -588,6 +587,77 @@ body::before {
 
 .carousel-dot:hover:not(.active) {
   background: var(--cream-faint);
+}
+
+/* ============ CERTIFICATIONS ============ */
+.certifications {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+  position: relative;
+  z-index: 2;
+}
+
+.cert-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cert-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--cream-faint);
+  white-space: nowrap;
+}
+
+.cert-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.cert-item:hover {
+  border-color: var(--gold);
+  background: var(--bg-hover);
+}
+
+.cert-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.cert-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cert-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.cert-issuer {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--cream-muted);
+  letter-spacing: 0.05em;
 }
 
 /* ============ SKILLS ============ */
