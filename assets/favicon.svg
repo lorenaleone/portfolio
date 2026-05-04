@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400&amp;display=swap');
+    </style>
+  </defs>
+  <text
+    y="88"
+    x="8"
+    font-size="92"
+    font-family="Fraunces, Georgia, serif"
+    font-style="italic"
+    font-weight="400"
+    fill="#c9a86a"
+  >L</text>
+</svg>
