@@ -20,15 +20,16 @@
 
 1. Acesse [script.google.com](https://script.google.com) → **Novo projeto**
 2. Renomeie o projeto para `ReservaFacil`
-3. Crie os seguintes arquivos (Arquivo → Novo script):
+3. O Apps Script cria um arquivo padrão chamado `Code.gs` — edite-o e substitua o conteúdo pelo de `backend/Code.gs`
+4. Crie os demais arquivos (Arquivo → Novo script):
    - `config.gs`
    - `auth.gs`
    - `sheets.gs`
    - `voucher.gs`
    - `agencia.gs`
    - `api.gs`
-4. Copie o conteúdo de cada arquivo da pasta `backend/` deste repositório
-5. Em `config.gs`, substitua `'SEU_SHEET_MASTER_ID_AQUI'` pelo ID copiado no Passo 1
+5. Copie o conteúdo de cada arquivo da pasta `backend/` deste repositório
+6. Em `config.gs`, substitua `'SEU_SHEET_MASTER_ID_AQUI'` pelo ID copiado no Passo 1
 
 ---
 
