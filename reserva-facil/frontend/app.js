@@ -3,7 +3,7 @@
 // ============================================================
 
 // ── Configuração ──────────────────────────────────────────────
-const API_URL = 'SUA_URL_DO_WEBAPP_AQUI'; // ⚠️ Substitua após o deploy
+const API_URL = 'https://script.google.com/macros/s/AKfycbxs9NHVoFohQe2-Zj63iusAXIIZQwJ46lSVV6wuRpZTCQXQ-DHAV8LKy2EYxEn5YHDo/exec';
 const STORAGE_KEY = 'reservafacil_auth';
 
 // ── Estado global ─────────────────────────────────────────────
@@ -186,6 +186,10 @@ function showVoucherPreview(voucher) {
     a.click();
   };
 
+  // Botão WhatsApp
+  const whatsappBtn = $('btn-whatsapp-share');
+  whatsappBtn.onclick = () => shareVoucherWhatsApp(voucher, numStr);
+
   // Botão compartilhar (Web Share API)
   const shareBtn = $('btn-share-pdf');
   if (navigator.share) {
@@ -202,6 +206,28 @@ function showVoucherPreview(voucher) {
 
   $('preview-voucher-num').textContent = `Nº ${numStr} — ${voucher.dados.clienteNome}`;
   showScreen('preview');
+}
+
+// ── WhatsApp Share ───────────────────────────────────────────
+function shareVoucherWhatsApp(voucher, numStr) {
+  const v = voucher.dados;
+  const msg = `🎫 *Voucher Reserva Fácil* Nº ${numStr}
+
+*Cliente:* ${v.clienteNome}
+*Passeio:* ${v.passeioNome}
+*Data:* ${v.data}
+*Total:* R$ ${v.total.toFixed(2).replace('.', ',')}
+${v.acompanhantes > 0 ? `*Acompanhantes:* ${v.acompanhantes}\n` : ''}
+Baixe o PDF com os detalhes completos!`;
+
+  const encodedMsg = encodeURIComponent(msg);
+  const whatsappUrl = `https://web.whatsapp.com/send?text=${encodedMsg}`;
+
+  try {
+    window.open(whatsappUrl, '_blank', 'width=800,height=600');
+  } catch (e) {
+    showToast('Não foi possível abrir WhatsApp', 'error');
+  }
 }
 
 $('btn-back-from-preview').addEventListener('click', () => showScreen('voucher'));
