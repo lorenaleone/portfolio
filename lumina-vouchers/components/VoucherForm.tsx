@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { VoucherData, EMPTY_VOUCHER } from '@/lib/types';
+import { useEffect, useState } from 'react';
+import { VoucherData, VoucherFull, EMPTY_VOUCHER } from '@/lib/types';
+import { storage } from '@/lib/storage';
 
 interface VoucherFormProps {
   onSubmit: (data: VoucherData) => void;
@@ -10,6 +11,17 @@ interface VoucherFormProps {
 export function VoucherForm({ onSubmit }: VoucherFormProps) {
   const [data, setData] = useState<VoucherData>(EMPTY_VOUCHER);
   const [errors, setErrors] = useState<Set<string>>(new Set());
+  const [recentClients, setRecentClients] = useState<VoucherFull[]>([]);
+  const [showQuickFill, setShowQuickFill] = useState(false);
+
+  useEffect(() => {
+    // Carregar clientes recentes
+    const history = storage.getHistory();
+    const unique = Array.from(
+      new Map(history.map((v) => [v.customerName, v])).values()
+    ).slice(0, 5);
+    setRecentClients(unique);
+  }, []);
 
   const update = <K extends keyof VoucherData>(key: K, value: VoucherData[K]) => {
     setData((prev) => ({ ...prev, [key]: value }));
@@ -18,6 +30,20 @@ export function VoucherForm({ onSubmit }: VoucherFormProps) {
       next.delete(key);
       setErrors(next);
     }
+  };
+
+  const quickFill = (voucher: VoucherFull) => {
+    setData({
+      customerName: voucher.customerName,
+      destination: voucher.destination,
+      date: '',
+      time: voucher.time || '',
+      pickupLocation: voucher.pickupLocation,
+      passengers: voucher.passengers,
+      notes: voucher.notes,
+      price: voucher.price,
+    });
+    setShowQuickFill(false);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -39,12 +65,46 @@ export function VoucherForm({ onSubmit }: VoucherFormProps) {
       pickupLocation: data.pickupLocation.trim(),
       notes: data.notes?.trim() || undefined,
     });
+
+    // Reset form
+    setData(EMPTY_VOUCHER);
   };
 
   const hasError = (field: string) => errors.has(field);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Quick fill button */}
+      {recentClients.length > 0 && (
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setShowQuickFill(!showQuickFill)}
+            className="w-full text-left px-4 py-3 bg-brand-50 border border-brand-200 rounded-xl font-medium text-brand-700 hover:bg-brand-100 transition text-sm"
+          >
+            ⚡ Reutilizar dados de clientes recentes
+          </button>
+
+          {showQuickFill && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-2xl shadow-lg p-3 space-y-2 z-10 animate-slide-up">
+              {recentClients.map((v) => (
+                <button
+                  key={v.id}
+                  type="button"
+                  onClick={() => quickFill(v)}
+                  className="w-full text-left p-3 rounded-xl hover:bg-gray-100 transition border border-gray-100"
+                >
+                  <div className="font-semibold text-gray-900 text-sm">{v.customerName}</div>
+                  <div className="text-xs text-gray-500">
+                    {v.destination} • {v.passengers} pass.
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       <Field
         label="Nome do cliente"
         icon="👤"

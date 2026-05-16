@@ -5,15 +5,19 @@ import { ConfigForm } from '@/components/ConfigForm';
 import { VoucherForm } from '@/components/VoucherForm';
 import { VoucherPreview } from '@/components/VoucherPreview';
 import { Welcome } from '@/components/Welcome';
+import { PaywallModal } from '@/components/PaywallModal';
 import { useAgencyConfig } from '@/hooks/useAgencyConfig';
+import { useSubscription } from '@/hooks/useSubscription';
 import { storage } from '@/lib/storage';
 import { VoucherData, VoucherFull, AgencyConfig } from '@/lib/types';
 
 export default function Home() {
   const { config, updateConfig, loaded, isConfigured } = useAgencyConfig();
+  const { isPaid, vouchersThisMonth, vouchersLimit } = useSubscription(config);
   const [currentVoucher, setCurrentVoucher] = useState<VoucherFull | null>(null);
   const [configOpen, setConfigOpen] = useState(false);
   const [welcomeShown, setWelcomeShown] = useState(false);
+  const [paywallOpen, setPaywallOpen] = useState(false);
 
   if (!loaded) {
     return (
@@ -37,6 +41,12 @@ export default function Home() {
   }
 
   const handleVoucherSubmit = (data: VoucherData) => {
+    // Verifica se atingiu limite grátis
+    if (!isPaid && vouchersThisMonth >= vouchersLimit) {
+      setPaywallOpen(true);
+      return;
+    }
+
     const voucher: VoucherFull = {
       ...data,
       agency: config,
@@ -117,6 +127,19 @@ export default function Home() {
           onClose={() => setCurrentVoucher(null)}
         />
       )}
+
+      <PaywallModal
+        open={paywallOpen}
+        vouchersUsed={vouchersThisMonth}
+        vouchersLimit={vouchersLimit as number}
+        config={config}
+        onClose={() => setPaywallOpen(false)}
+        onSuccess={() => {
+          setPaywallOpen(false);
+          // Recarrega para atualizar status de assinatura
+          window.location.reload();
+        }}
+      />
     </div>
   );
 }
